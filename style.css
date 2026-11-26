@@ -1,0 +1,536 @@
+@charset "UTF-8";
+
+:root {
+  --bg-halaman: #f8f5f0;
+  --bg-kartu: #ffffff;
+  --bg-aksen-lembut: #fdf6ec;
+  --warna-utama: #b45309;
+  --warna-utama-hover: #92400e;
+  --warna-teks: #1f2937;
+  --warna-teks-redup: #6b7280;
+  --warna-garis: #e5e7eb;
+  --warna-hadir-bg: #dcfce7;
+  --warna-hadir-teks: #166534;
+  --warna-absen-bg: #fee2e2;
+  --warna-absen-teks: #991b1b;
+  --radius-kartu: 16px;
+  --radius-tombol: 10px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--bg-halaman);
+  color: var(--warna-teks);
+  line-height: 1.6;
+}
+
+/* Mencegah scroll sebelum tombol Buka Undangan diklik */
+body.terkunci {
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* =========================================
+   1. HERO COVER (SAMPUL PENUH)
+   ========================================= */
+.hero-cover {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem;
+  background: linear-gradient(160deg, #fef3c7 0%, #fde68a 50%, #f59e0b 100%);
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.hero-cover.terbuka {
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.cover-konten {
+  width: 100%;
+  max-width: 440px;
+  background-color: rgba(255, 255, 255, 0.92);
+  padding: 2.25rem 1.5rem;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.label-acara {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--warna-utama);
+  margin-bottom: 0.5rem;
+}
+
+.nama-tokoh {
+  font-size: 2rem;
+  line-height: 1.2;
+  color: var(--warna-teks);
+  margin-bottom: 0.4rem;
+}
+
+.tanggal-cover {
+  font-size: 0.95rem;
+  color: var(--warna-teks-redup);
+  margin-bottom: 1.5rem;
+}
+
+.kotak-tamu {
+  background-color: var(--bg-aksen-lembut);
+  border: 1px dashed var(--warna-utama);
+  border-radius: 12px;
+  padding: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.sapaan-label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--warna-teks-redup);
+  margin-bottom: 0.25rem;
+}
+
+.nama-tamu-tampil {
+  font-size: 1.15rem;
+  color: var(--warna-teks);
+  word-break: break-word;
+}
+
+/* =========================================
+   WADAH UTAMA & TIPOGRAFI (MOBILE-FIRST)
+   ========================================= */
+.wadah-utama {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 5rem;
+}
+
+.kartu {
+  background-color: var(--bg-kartu);
+  border-radius: var(--radius-kartu);
+  padding: 1.5rem 1.25rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.subjudul-seksi {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--warna-utama);
+  margin-bottom: 0.25rem;
+}
+
+.kartu h2 {
+  text-align: center;
+  font-size: 1.45rem;
+  color: var(--warna-teks);
+  margin-bottom: 0.85rem;
+}
+
+.deskripsi {
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--warna-teks-redup);
+  margin-bottom: 1.25rem;
+}
+
+.deskripsi-kecil {
+  font-size: 0.88rem;
+  color: var(--warna-teks-redup);
+  margin-bottom: 1rem;
+}
+
+/* =========================================
+   2. COUNTDOWN & INFO ACARA
+   ========================================= */
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.countdown-item {
+  background-color: var(--bg-aksen-lembut);
+  border: 1px solid #fde68a;
+  border-radius: 10px;
+  padding: 0.75rem 0.25rem;
+  text-align: center;
+}
+
+.countdown-item span {
+  display: block;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--warna-utama);
+  line-height: 1.2;
+}
+
+.countdown-item small {
+  font-size: 0.75rem;
+  color: var(--warna-teks-redup);
+}
+
+.detail-box {
+  background-color: var(--bg-halaman);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.detail-box h3 {
+  font-size: 1.05rem;
+  color: var(--warna-utama);
+  margin-bottom: 0.5rem;
+}
+
+.detail-baris {
+  font-size: 0.92rem;
+  margin-bottom: 0.35rem;
+}
+
+/* =========================================
+   TOMBOL AKSI
+   ========================================= */
+.btn-utama,
+.btn-sekunder {
+  display: inline-block;
+  width: 100%;
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius-tombol);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.btn-utama {
+  background-color: var(--warna-utama);
+  color: #ffffff;
+}
+
+.btn-utama:hover {
+  background-color: var(--warna-utama-hover);
+}
+
+.btn-sekunder {
+  background-color: transparent;
+  color: var(--warna-utama);
+  border: 2px solid var(--warna-utama);
+}
+
+.btn-sekunder:hover {
+  background-color: var(--warna-utama);
+  color: #ffffff;
+}
+
+.jarak-bawah {
+  margin-bottom: 1.5rem;
+}
+
+/* =========================================
+   3. GOOGLE MAPS & AMPLOP DIGITAL
+   ========================================= */
+.peta-wadah {
+  width: 100%;
+  height: 280px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--warna-garis);
+  margin-bottom: 0.85rem;
+}
+
+.peta-wadah iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.amplop-box {
+  border-top: 1px solid var(--warna-garis);
+  padding-top: 1.25rem;
+}
+
+.amplop-box h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.35rem;
+}
+
+.rekening-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  background-color: var(--bg-halaman);
+  border: 1px solid var(--warna-garis);
+  border-radius: 10px;
+  padding: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
+.bank-label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--warna-teks-redup);
+}
+
+.nomor-salin {
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+  color: var(--warna-teks);
+}
+
+.alamat-salin {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--warna-teks);
+  display: block;
+}
+
+.btn-salin {
+  flex-shrink: 0;
+  background-color: var(--warna-utama);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-salin:hover {
+  background-color: var(--warna-utama-hover);
+}
+
+/* =========================================
+   4. GALERI FOTO & SCROLL ANIMATION
+   ========================================= */
+.galeri-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.galeri-item {
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  background-color: var(--bg-halaman);
+  border: 1px solid var(--warna-garis);
+}
+
+.galeri-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.galeri-item:hover img {
+  transform: scale(1.05);
+}
+
+/* Efek animasi muncul saat scroll */
+.animasi-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s ease-out, transform 0.65s ease-out;
+}
+
+.animasi-scroll.tampil {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================
+   5. FORM RSVP & BUKU TAMU
+   ========================================= */
+.grup-input {
+  margin-bottom: 1rem;
+}
+
+.grup-input label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.grup-input input,
+.grup-input select,
+.grup-input textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--warna-garis);
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  background-color: #ffffff;
+}
+
+.grup-input input:focus,
+.grup-input select:focus,
+.grup-input textarea:focus {
+  outline: 2px solid #f59e0b;
+  border-color: transparent;
+}
+
+.buku-tamu-wadah {
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--warna-garis);
+  padding-top: 1.25rem;
+}
+
+.buku-tamu-wadah h3 {
+  font-size: 1rem;
+  margin-bottom: 0.85rem;
+}
+
+.daftar-ucapan {
+  max-height: 360px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.item-ucapan {
+  background-color: var(--bg-halaman);
+  border-radius: 10px;
+  padding: 0.85rem;
+  border-left: 4px solid var(--warna-utama);
+}
+
+.ucapan-atas {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.ucapan-nama {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.badge-status {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.badge-hadir {
+  background-color: var(--warna-hadir-bg);
+  color: var(--warna-hadir-teks);
+}
+
+.badge-tidak {
+  background-color: var(--warna-absen-bg);
+  color: var(--warna-absen-teks);
+}
+
+.ucapan-isi {
+  font-size: 0.9rem;
+  color: var(--warna-teks);
+}
+
+/* =========================================
+   6. FLOATING AUDIO TOGGLE & TOAST
+   ========================================= */
+.btn-musik-floating {
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: var(--warna-utama);
+  color: #ffffff;
+  border: none;
+  border-radius: 999px;
+  padding: 0.7rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.btn-musik-floating.aktif {
+  background-color: #15803d;
+}
+
+.toast {
+  position: fixed;
+  bottom: 4.75rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  z-index: 1100;
+  background-color: #1f2937;
+  color: #ffffff;
+  padding: 0.65rem 1.15rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  white-space: nowrap;
+  max-width: 90vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.toast.muncul {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.footer {
+  text-align: center;
+  padding: 1.5rem 1rem 4.5rem;
+  font-size: 0.88rem;
+  color: var(--warna-teks-redup);
+}
+
+/* Penyesuaian Layar Desktop */
+@media (min-width: 640px) {
+  .nama-tokoh {
+    font-size: 2.4rem;
+  }
+
+  .kartu {
+    padding: 2rem;
+  }
+}

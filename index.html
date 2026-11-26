@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Undangan Syukuran & Ulang Tahun - Farid Athaillah</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body class="terkunci">
+
+  <!-- Audio Latar Belakang -->
+  <audio id="musik-latar" src="assets/musik.mp3" autoplay loop preload="auto"></audio>
+
+  <!-- 1. COVER / SAMPUL UNDANGAN (HERO COVER) -->
+  <header class="hero-cover" id="cover">
+    <div class="cover-konten">
+      <p class="label-acara">Undangan Syukuran &amp; Ulang Tahun</p>
+      <h1 class="nama-tokoh">Farid Athaillah ke-17</h1>
+      <p class="tanggal-cover">Minggu, 29 November 2026</p>
+
+      <div class="kotak-tamu">
+        <span class="sapaan-label">Kepada Yth. Bapak/Ibu/Saudara/i:</span>
+        <strong id="nama-tamu-url" class="nama-tamu-tampil">Tamu Undangan</strong>
+      </div>
+
+      <button id="btn-buka" class="btn-utama" type="button">
+        Buka Undangan
+      </button>
+    </div>
+  </header>
+
+  <!-- KONTEN UTAMA UNDANGAN -->
+  <main class="wadah-utama" id="konten-utama">
+
+    <!-- 2. INFORMASI ACARA & HITUNG MUNDUR -->
+    <section class="kartu animasi-scroll" id="acara">
+      <p class="subjudul-seksi">Save The Date</p>
+      <h2>Waktu &amp; Tempat Acara</h2>
+      <p class="deskripsi">
+        Dengan penuh rasa syukur, kami mengundang Anda untuk hadir dan berbagi kebahagiaan dalam acara syukuran ulang tahun kami.
+      </p>
+
+      <!-- Countdown Timer Real-Time -->
+      <div class="countdown-grid" id="countdown">
+        <div class="countdown-item">
+          <span id="hari">00</span>
+          <small>Hari</small>
+        </div>
+        <div class="countdown-item">
+          <span id="jam">00</span>
+          <small>Jam</small>
+        </div>
+        <div class="countdown-item">
+          <span id="menit">00</span>
+          <small>Menit</small>
+        </div>
+        <div class="countdown-item">
+          <span id="detik">00</span>
+          <small>Detik</small>
+        </div>
+      </div>
+
+      <!-- Detail Hierarki Waktu & Tempat -->
+      <div class="detail-box">
+        <h3>Acara Syukuran &amp; Ramah Tamah</h3>
+        <p class="detail-baris"><strong>Hari/Tanggal:</strong> Minggu, 29 November 2026</p>
+        <p class="detail-baris"><strong>Waktu:</strong> 10.00 WIB – 14.00 WIB</p>
+        <p class="detail-baris"><strong>Lokasi:</strong> Komplek Pakujaya, Jl. Paku Jaya Permai No. 21, Paku Jaya, Tangerang Selatan</p>
+      </div>
+
+      <!-- Tombol Simpan ke Kalender -->
+      <a
+        href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Syukuran+%26+Ulang+Tahun+Farid+Athaillah+ke-17&dates=20261129T030000Z/20261129T070000Z&details=Acara+Syukuran+dan+Ulang+Tahun+Farid+Athaillah&location=Komplek+Pakujaya,+Jl.+Paku+Jaya+Permai+No.21,+Paku+Jaya,+Tangerang+Selatan"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-sekunder"
+      >
+        + Simpan ke Google Calendar
+      </a>
+    </section>
+
+    <!-- 3. NAVIGASI LOKASI & AMPLOP DIGITAL -->
+    <section class="kartu animasi-scroll" id="lokasi-kado">
+      <p class="subjudul-seksi">Peta &amp; Tanda Kasih</p>
+      <h2>Lokasi &amp; Amplop Digital</h2>
+
+      <!-- Embed Peta Google Maps -->
+      <div class="peta-wadah">
+        <iframe
+          title="Peta Lokasi Acara"
+          src="https://maps.google.com/maps?q=Komplek+Pakujaya,+Jl.+Paku+Jaya+Permai+No.21,+Paku+Jaya,+Serpong+Utara,+Tangerang+Selatan&z=16&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <a
+        href="https://maps.app.goo.gl/4hLa3Qcf1b6SJNWz6?g_st=aw"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-utama jarak-bawah"
+      >
+        Buka Petunjuk Arah (Google Maps)
+      </a>
+
+      <!-- Amplop Digital / Copy to Clipboard -->
+      <div class="amplop-box">
+        <h3>Amplop Digital &amp; Kirim Kado</h3>
+        <p class="deskripsi-kecil">
+          Doa dan kehadiran Anda adalah hadiah terindah. Namun jika ingin mengirimkan tanda kasih secara digital atau paket kado:
+        </p>
+
+        <div class="rekening-item">
+          <div>
+            <span class="bank-label">Bank BCA — a.n. Farid Athaillah</span>
+            <strong id="nomor-rek" class="nomor-salin">021709843020</strong>
+          </div>
+          <button type="button" class="btn-salin" data-target="nomor-rek" data-label="Nomor rekening BCA">
+            Salin
+          </button>
+        </div>
+
+        <div class="rekening-item">
+          <div>
+            <span class="bank-label">Alamat Pengiriman Kado</span>
+            <strong id="alamat-kado" class="alamat-salin">Jl. Raya Serpong No. 45, Tangerang Selatan 15310</strong>
+          </div>
+          <button type="button" class="btn-salin" data-target="alamat-kado" data-label="Alamat pengiriman kado">
+            Salin
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. GALERI FOTO & SCROLL ANIMATION -->
+    <section class="kartu animasi-scroll" id="galeri">
+      <p class="subjudul-seksi">Momen Bahagia</p>
+      <h2>Galeri Foto</h2>
+      <div class="galeri-grid">
+        <figure class="galeri-item animasi-scroll">
+          <img src="assets/foto-1.jpg" alt="Momen kenangan 1" loading="lazy">
+        </figure>
+        <figure class="galeri-item animasi-scroll">
+          <img src="assets/foto-2.jpg" alt="Momen kenangan 2" loading="lazy">
+        </figure>
+        <figure class="galeri-item animasi-scroll">
+          <img src="assets/foto-3.jpg" alt="Momen kenangan 3" loading="lazy">
+        </figure>
+        <figure class="galeri-item animasi-scroll">
+          <img src="assets/foto-4.jpg" alt="Momen kenangan 4" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- 5. FORMULIR RSVP & BUKU TAMU (LOCALSTORAGE) -->
+    <section class="kartu animasi-scroll" id="rsvp">
+      <p class="subjudul-seksi">Kehadiran &amp; Doa</p>
+      <h2>RSVP &amp; Buku Tamu</h2>
+
+      <form id="form-rsvp" class="form-rsvp">
+        <div class="grup-input">
+          <label for="nama-tamu">Nama Tamu</label>
+          <input type="text" id="nama-tamu" placeholder="Masukkan nama lengkap Anda" required>
+        </div>
+
+        <div class="grup-input">
+          <label for="status-hadir">Status Kehadiran</label>
+          <select id="status-hadir" required>
+            <option value="Hadir">Hadir</option>
+            <option value="Tidak Hadir">Tidak Hadir</option>
+          </select>
+        </div>
+
+        <div class="grup-input">
+          <label for="pesan-doa">Ucapan &amp; Doa</label>
+          <textarea id="pesan-doa" rows="3" placeholder="Tuliskan ucapan selamat dan doa..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn-utama">Kirim Konfirmasi &amp; Ucapan</button>
+      </form>
+
+      <!-- Daftar Buku Tamu -->
+      <div class="buku-tamu-wadah">
+        <h3>Daftar Ucapan Tamu (<span id="jumlah-ucapan">0</span>)</h3>
+        <div id="daftar-ucapan" class="daftar-ucapan"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>Terima kasih atas kehadiran dan doa terbaik Anda.</p>
+    <p><strong>Farid &amp; Keluarga</strong></p>
+  </footer>
+
+  <!-- 6. KONTROL AUDIO (FLOATING MUSIC TOGGLE) -->
+  <button
+    id="btn-musik"
+    class="btn-musik-floating"
+    type="button"
+    aria-label="Putar atau jeda musik latar"
+    title="Putar / Jeda Musik"
+  >
+    <span id="ikon-musik">▶</span>
+    <span id="teks-musik" class="teks-musik">Musik</span>
+  </button>
+
+  <!-- NOTIFIKASI TOAST COPY TO CLIPBOARD -->
+  <div id="toast-notifikasi" class="toast" role="status" aria-live="polite"></div>
+
+</body>
+</html>
